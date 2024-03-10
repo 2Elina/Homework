@@ -1,0 +1,33 @@
+while True:
+    try:
+        # Ask the user for the filename
+        filename = input("Enter the name of a text file you want to open: ")
+
+        try:
+            # Attempt to open and read the file
+            with open(filename, 'r') as file:
+                print(file.read())
+        except FileNotFoundError:
+            create_file_choice = input(f"The file '{filename}' does not exist. Do you want to create it and write to it? (yes/no): ")
+            if create_file_choice.lower() == 'yes':
+                content = input(f"Enter the content you want to add to {filename}: ")
+                with open(filename, 'w') as new_file:
+                    new_file.write(content)
+                print(f"File '{filename}' created and content written successfully.")
+                continue
+            else:
+                continue
+
+        # Ask if the user wants to write to a file
+        write_choice = input("Do you want to write to a file? (yes/no): ")
+
+        if write_choice.lower() == 'yes':
+            content = input(f"Enter the content you want to add to {filename}: ")
+            with open(filename, 'w') as file:
+                file.write(content)
+            print(f"Content written successfully to {filename}")
+
+        break  # Exit the loop
+
+    except Exception as e:
+        print(f"An error occurred: {e}")
