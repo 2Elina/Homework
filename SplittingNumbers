@@ -1,0 +1,23 @@
+numbers_input = input("Enter the numbers:")
+numbers = numbers_input.split()
+
+
+def classify_numbers(numbers):
+    odd_numbers = []
+    even_numbers = []
+
+    for number in numbers:
+        number = int(number)
+
+        if number % 2 == 0:
+            even_numbers.append(number)
+        else:
+            odd_numbers.append(number)
+
+    return odd_numbers, even_numbers
+
+
+odd_numbers, even_numbers = classify_numbers(numbers)
+
+print("Odd numbers:", odd_numbers)
+print("Even numbers:", even_numbers)
